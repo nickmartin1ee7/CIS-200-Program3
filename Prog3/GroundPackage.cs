@@ -1,19 +1,11 @@
-﻿// Program 1A
-// CIS 200-01
-// Fall 2020
-// Due: 9/21/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: GroundPackage.cs
+﻿// File: GroundPackage.cs
 // The Package class is a concrete derived class from Package. It adds
 // a Zone Distance.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 
+[Serializable]
 public class GroundPackage : Package
 {
     // Precondition:  pLength > 0, pWidth > 0, pHeight > 0,

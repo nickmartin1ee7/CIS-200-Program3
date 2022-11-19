@@ -1,18 +1,10 @@
-﻿// Program 0
-// CIS 200-76
-// Fall 2020
-// Due: 9/7/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: Address.cs
+﻿// File: Address.cs
 // This classes stores a typical US address consisting of name,
 // two address lines, city, state, and 5 digit zip code.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
+[Serializable]
 public class Address
 {
     public const int MIN_ZIP = 0;     // Minimum ZipCode value

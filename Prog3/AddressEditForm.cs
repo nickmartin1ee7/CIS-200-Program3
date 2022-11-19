@@ -16,7 +16,7 @@ namespace UPVApp
     public partial class AddressEditForm : AddressForm
     {
         private readonly Dictionary<string, Address> _namedAddresses;
-
+        private bool _isEditable = true;
         /// <summary>
         /// Holds the original address name in case it is edited.
         /// This is important, because we use it as a key to find the original.
@@ -29,6 +29,8 @@ namespace UPVApp
         {
             InitializeComponent();
 
+            ToggleTextEditableInputs();
+
             _namedAddresses = addresses
                 .ToDictionary(address => address.Name);
 
@@ -37,28 +39,42 @@ namespace UPVApp
                 .ToArray());
         }
 
+        private void ToggleTextEditableInputs()
+        {
+            _isEditable = !_isEditable;
+
+            base.nameTxt.Enabled = _isEditable;
+            base.address1Txt.Enabled = _isEditable;
+            base.address2Txt.Enabled = _isEditable;
+            base.cityTxt.Enabled = _isEditable;
+            base.stateCbo.Enabled = _isEditable;
+            base.zipTxt.Enabled = _isEditable;
+            base.okBtn.Enabled = _isEditable;
+        }
+
         protected override void RequiredTextFields_Validating(object sender, CancelEventArgs e)
         {
-            if (ShouldValidate())
+            if (_isEditable)
                 base.RequiredTextFields_Validating(sender, e);
         }
 
         protected override void stateCbo_Validating(object sender, CancelEventArgs e)
         {
-            if (ShouldValidate())
+            if (_isEditable)
                 base.stateCbo_Validating(sender, e);
         }
 
         protected override void zipTxt_Validating(object sender, CancelEventArgs e)
         {
-            if (ShouldValidate())
+            if (_isEditable)
                 base.zipTxt_Validating(sender, e);
         }
 
-        private bool ShouldValidate() => addressComboBox.SelectedIndex != -1;
-
         private void addressComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (!_isEditable)
+                ToggleTextEditableInputs();
+
             var address = _namedAddresses[(string)addressComboBox.SelectedItem];
             OriginalAddressName = address.Name;
             AddressName = address.Name;

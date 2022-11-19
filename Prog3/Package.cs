@@ -1,18 +1,10 @@
-﻿// Program 1A
-// CIS 200-01
-// Fall 2020
-// Due: 9/21/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: Package.cs
+﻿// File: Package.cs
 // The Package class is an abstract derived class from Parcel. It adds
 // dimensions and weight.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
+[Serializable]
 public abstract class Package : Parcel
 {
     private double _length; // Length of package in inches
@@ -122,7 +114,7 @@ public abstract class Package : Parcel
                     $"{nameof(Weight)} must be > 0");
         }
     }
-    
+
     // Helper Property
     protected double TotalDimension
     {

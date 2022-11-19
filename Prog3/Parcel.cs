@@ -1,17 +1,9 @@
-﻿// Program 0
-// CIS 200-76
-// Fall 2020
-// Due: 9/7/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: Parcel.cs
+﻿// File: Parcel.cs
 // Parcel serves as the abstract base class of the Parcel hierachy.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
+[Serializable]
 public abstract class Parcel
 {
     private Address _originAddress; // The origin address for the parcel

@@ -1,18 +1,10 @@
-﻿// Program 1A
-// CIS 200-01
-// Fall 2020
-// Due: 9/21/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: AirPackage.cs
+﻿// File: AirPackage.cs
 // The AirPackage class is an abstract derived class from Package. It is able
 // to determine if the package is heavy or large.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
+[Serializable]
 public abstract class AirPackage : Package
 {
     public const double HEAVY_THRESHOLD = 75; // Min weight of heavy package

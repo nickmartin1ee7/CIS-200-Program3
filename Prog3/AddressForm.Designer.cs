@@ -201,19 +201,19 @@
 
         #endregion
 
-        private System.Windows.Forms.Label nameLbl;
-        private System.Windows.Forms.Label address1Lbl;
-        private System.Windows.Forms.Label cityLbl;
-        private System.Windows.Forms.Label stateLbl;
-        private System.Windows.Forms.Label zipLbl;
-        private System.Windows.Forms.TextBox nameTxt;
-        private System.Windows.Forms.TextBox address1Txt;
-        private System.Windows.Forms.TextBox address2Txt;
-        private System.Windows.Forms.TextBox cityTxt;
-        private System.Windows.Forms.ComboBox stateCbo;
-        private System.Windows.Forms.TextBox zipTxt;
-        private System.Windows.Forms.Button okBtn;
-        private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        protected System.Windows.Forms.Label nameLbl;
+        protected System.Windows.Forms.Label address1Lbl;
+        protected System.Windows.Forms.Label cityLbl;
+        protected System.Windows.Forms.Label stateLbl;
+        protected System.Windows.Forms.Label zipLbl;
+        protected System.Windows.Forms.TextBox nameTxt;
+        protected System.Windows.Forms.TextBox address1Txt;
+        protected System.Windows.Forms.TextBox address2Txt;
+        protected System.Windows.Forms.TextBox cityTxt;
+        protected System.Windows.Forms.ComboBox stateCbo;
+        protected System.Windows.Forms.TextBox zipTxt;
+        protected System.Windows.Forms.Button okBtn;
+        protected System.Windows.Forms.Button cancelBtn;
+        protected System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

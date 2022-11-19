@@ -1,18 +1,10 @@
-﻿// Program 0
-// CIS 200-76
-// Fall 2020
-// Due: 9/7/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: Letter.cs
+﻿// File: Letter.cs
 // The Letter class is a concrete derived class of Parcel. Letters
 // have a fixed cost.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
+[Serializable]
 public class Letter : Parcel
 {
     private decimal _fixedCost; // Cost to send letter

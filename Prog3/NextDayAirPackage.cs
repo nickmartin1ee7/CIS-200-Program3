@@ -1,18 +1,10 @@
-﻿// Program 1A
-// CIS 200-01
-// Fall 2020
-// Due: 9/21/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: NextDayAirPackage.cs
+﻿// File: NextDayAirPackage.cs
 // The NextDayAirPackage class is a concrete derived class from AirPackage. It adds
 // an express fee.
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
+[Serializable]
 public class NextDayAirPackage : AirPackage
 {
     private decimal _expressFee; // Next day air package's express fee

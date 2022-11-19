@@ -6,6 +6,8 @@
 
 
 using System;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Windows.Forms;
 
@@ -13,6 +15,7 @@ namespace UPVApp
 {
     public partial class Prog3Form : Form
     {
+        private const string DATA_FILE_FILTER = "Data files (*.dat)|*.dat";
         private UserParcelView upv; // The UserParcelView
 
         // Precondition:  None
@@ -23,41 +26,6 @@ namespace UPVApp
             InitializeComponent();
 
             upv = new UserParcelView();
-
-            // Test Data - Magic Numbers OK
-            upv.AddAddress("  John Smith  ", "   123 Any St.   ", "  Apt. 45 ",
-                "  Louisville   ", "  KY   ", 40202); // Test Address 1
-            upv.AddAddress("Jane Doe", "987 Main St.",
-                "Beverly Hills", "CA", 90210); // Test Address 2
-            upv.AddAddress("James Kirk", "654 Roddenberry Way", "Suite 321",
-                "El Paso", "TX", 79901); // Test Address 3
-            upv.AddAddress("John Crichton", "678 Pau Place", "Apt. 7",
-                "Portland", "ME", 04101); // Test Address 4
-            upv.AddAddress("John Doe", "111 Market St.", "",
-                "Jeffersonville", "IN", 47130); // Test Address 5
-            upv.AddAddress("Jane Smith", "55 Hollywood Blvd.", "Apt. 9",
-                "Los Angeles", "CA", 90212); // Test Address 6
-            upv.AddAddress("Captain Robert Crunch", "21 Cereal Rd.", "Room 987",
-                "Bethesda", "MD", 20810); // Test Address 7
-            upv.AddAddress("Vlad Dracula", "6543 Vampire Way", "Apt. 1",
-                "Bloodsucker City", "TN", 37210); // Test Address 8
-
-            upv.AddLetter(upv.AddressAt(0), upv.AddressAt(1), 3.95M);                     // Letter test object
-            upv.AddLetter(upv.AddressAt(2), upv.AddressAt(3), 4.25M);                     // Letter test object
-            upv.AddGroundPackage(upv.AddressAt(4), upv.AddressAt(5), 14, 10, 5, 12.5);    // Ground test object
-            upv.AddGroundPackage(upv.AddressAt(6), upv.AddressAt(7), 8.5, 9.5, 6.5, 2.5); // Ground test object
-            upv.AddNextDayAirPackage(upv.AddressAt(0), upv.AddressAt(2), 25, 15, 15,      // Next Day test object
-                85, 7.50M);
-            upv.AddNextDayAirPackage(upv.AddressAt(2), upv.AddressAt(4), 9.5, 6.0, 5.5,   // Next Day test object
-                5.25, 5.25M);
-            upv.AddNextDayAirPackage(upv.AddressAt(1), upv.AddressAt(6), 10.5, 6.5, 9.5,  // Next Day test object
-                15.5, 5.00M);
-            upv.AddTwoDayAirPackage(upv.AddressAt(4), upv.AddressAt(6), 46.5, 39.5, 28.0, // Two Day test object
-                80.5, TwoDayAirPackage.Delivery.Saver);
-            upv.AddTwoDayAirPackage(upv.AddressAt(7), upv.AddressAt(0), 15.0, 9.5, 6.5,   // Two Day test object
-                75.5, TwoDayAirPackage.Delivery.Early);
-            upv.AddTwoDayAirPackage(upv.AddressAt(5), upv.AddressAt(3), 12.0, 12.0, 6.0,  // Two Day test object
-                5.5, TwoDayAirPackage.Delivery.Saver);
         }
 
         // Precondition:  File, About menu item activated
@@ -234,12 +202,51 @@ namespace UPVApp
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using (var openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = DATA_FILE_FILTER;
 
+                if (openFileDialog.ShowDialog() != DialogResult.OK) return; // Return early
+
+                try
+                {
+                    var binFormatter = new BinaryFormatter();
+                    var fs = File.Open(openFileDialog.FileName, FileMode.Open);
+                    upv = binFormatter.Deserialize(fs) as UserParcelView;
+
+                    if (upv is null)
+                        MessageBox.Show("The loaded file did not contain any content or was corrupt!");
+                    else
+                        MessageBox.Show($"Loaded {upv.AddressCount} addresses and {upv.ParcelCount} parcels from file", "Loaded successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to load due to a {ex.GetType().Name}. Reason: {ex.Message}", "Failed to Open");
+                }
+            }
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            using (var saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = DATA_FILE_FILTER;
 
+                if (saveFileDialog.ShowDialog() != DialogResult.OK) return; // Return early
+
+                try
+                {
+                    var binFormatter = new BinaryFormatter();
+                    var fs = File.Create(saveFileDialog.FileName);
+                    binFormatter.Serialize(fs, upv);
+
+                    MessageBox.Show($"Saved to {saveFileDialog.FileName}", "Saved successfully");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Failed to save due to a {ex.GetType().Name}. Reason: {ex.Message}", "Failed to Save");
+                }
+            }
         }
 
         // Precondition:  Edit, Address menu item activated
