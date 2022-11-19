@@ -1,20 +1,10 @@
-﻿// Program 2
-// CIS 200-76
-// Fall 2020
-// Due: 10/20/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: LetterForm.cs
+﻿// File: LetterForm.cs
 // This class creates the Letter dialog box form GUI. It performs validation
 // and provides properties properties for each field.
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace UPVApp

@@ -1,10 +1,4 @@
-﻿// Program 2
-// CIS 200-76
-// Fall 2020
-// Due: 10/20/2020
-// By: Andrew L. Wright (students use Grading ID)
-
-// File: AddressForm.cs
+﻿// File: AddressForm.cs
 // This class creates the Address dialog box form GUI. It performs validation
 // and provides String properties for each field. This solution uses one
 // event handler for all required text textboxes Validating events and one
