@@ -132,7 +132,7 @@
             // editAddressToolStripMenuItem
             // 
             this.editAddressToolStripMenuItem.Name = "editAddressToolStripMenuItem";
-            this.editAddressToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editAddressToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.editAddressToolStripMenuItem.Text = "&Address";
             this.editAddressToolStripMenuItem.Click += new System.EventHandler(this.editAddressToolStripMenuItem_Click);
             // 
@@ -181,7 +181,7 @@
             this.Controls.Add(this.parcelMenuStrip);
             this.MainMenuStrip = this.parcelMenuStrip;
             this.Name = "Prog3Form";
-            this.Text = "Program 2";
+            this.Text = "Program 3";
             this.parcelMenuStrip.ResumeLayout(false);
             this.parcelMenuStrip.PerformLayout();
             this.ResumeLayout(false);
