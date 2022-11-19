@@ -34,8 +34,8 @@ namespace UPVApp
         {
             string NL = Environment.NewLine; // Newline shorthand
 
-            MessageBox.Show($"Program 2{NL}By: Andrew L. Wright{NL}CIS 200{NL}Fall 2020",
-                "About Program 2");
+            MessageBox.Show($"Program 2{NL}By: Nicholas Martin{NL}CIS 200{NL}Fall 2022",
+                "About Program 3");
         }
 
         // Precondition:  File, Exit menu item activated
