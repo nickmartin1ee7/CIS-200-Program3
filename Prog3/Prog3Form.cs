@@ -174,15 +174,22 @@ namespace UPVApp
             {
                 if (decimal.TryParse(letterForm.FixedCostText, out fixedCost))
                 {
-                    // For this to work, LetterForm's combo boxes need to be in same
-                    // order as upv's AddressList
-                    upv.AddLetter(upv.AddressAt(letterForm.OriginAddressIndex),
-                        upv.AddressAt(letterForm.DestinationAddressIndex),
-                        fixedCost); // Letter to be inserted
+                    try
+                    {
+                        // For this to work, LetterForm's combo boxes need to be in same
+                        // order as upv's AddressList
+                        upv.AddLetter(upv.AddressAt(letterForm.OriginAddressIndex),
+                            upv.AddressAt(letterForm.DestinationAddressIndex),
+                            fixedCost); // Letter to be inserted
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        ShowAddressValidationError(ex.Message);
+                    }
                 }
                 else // This should never happen if form validation works!
                 {
-                    MessageBox.Show("Problem with Letter Validation!", "Validation Error");
+                    ShowAddressValidationError();
                 }
             }
 
@@ -224,5 +231,52 @@ namespace UPVApp
             reportTxt.SelectionStart = 0;
             reportTxt.SelectionLength = 0;
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        // Precondition:  Edit, Address menu item activated
+        // Postcondition: The Address dialog box is displayed. If data entered
+        //                are OK, an Address is modified and replaces the original in the list
+        //                of addresses
+        private void editAddressToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var addressEditForm = new AddressEditForm(upv.AddressList))    // The address dialog box form
+            {
+                DialogResult result = addressEditForm.ShowDialog(); // Show form as dialog and store result
+
+                if (result == DialogResult.OK) // Only add if OK
+                {
+                    if (int.TryParse(addressEditForm.ZipText, out int zip))
+                    {
+                        try
+                        {
+                            upv.EditAddress(addressEditForm.OriginalAddressName, addressEditForm.AddressName, addressEditForm.Address1,
+                                addressEditForm.Address2, addressEditForm.City, addressEditForm.State,
+                                zip); // Use form's properties to edit existing address
+                        }
+                        catch (ArgumentException ex)
+                        {
+                            ShowAddressValidationError(ex.Message);
+                        }
+                    }
+                    else // This should never happen if form validation works!
+                    {
+                        ShowAddressValidationError();
+                    }
+                }
+            }
+        }
+
+        private void ShowAddressValidationError(string message = null) => _ = string.IsNullOrWhiteSpace(message)
+            ? MessageBox.Show("Problem with Address Validation!", "Validation Error")
+            : MessageBox.Show(message, "Validation Error");
     }
 }

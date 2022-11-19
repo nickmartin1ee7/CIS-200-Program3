@@ -30,6 +30,8 @@
         {
             this.parcelMenuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.insertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +41,8 @@
             this.listAddressesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportTxt = new System.Windows.Forms.TextBox();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parcelMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,6 +51,7 @@
             this.parcelMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.insertToolStripMenuItem,
+            this.editToolStripMenuItem,
             this.reportToolStripMenuItem});
             this.parcelMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.parcelMenuStrip.Name = "parcelMenuStrip";
@@ -57,23 +62,39 @@
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openToolStripMenuItem,
+            this.saveAsToolStripMenuItem,
             this.aboutToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             this.fileToolStripMenuItem.Text = "&File";
             // 
+            // openToolStripMenuItem
+            // 
+            this.openToolStripMenuItem.Name = "openToolStripMenuItem";
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Text = "&Open";
+            this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Text = "&Save As";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "A&bout";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -136,7 +157,22 @@
             this.reportTxt.Size = new System.Drawing.Size(560, 505);
             this.reportTxt.TabIndex = 1;
             // 
-            // Prog2Form
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editAddressToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // editAddressToolStripMenuItem
+            // 
+            this.editAddressToolStripMenuItem.Name = "editAddressToolStripMenuItem";
+            this.editAddressToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editAddressToolStripMenuItem.Text = "Edit &Address";
+            this.editAddressToolStripMenuItem.Click += new System.EventHandler(this.editAddressToolStripMenuItem_Click);
+            // 
+            // Prog3Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +180,7 @@
             this.Controls.Add(this.reportTxt);
             this.Controls.Add(this.parcelMenuStrip);
             this.MainMenuStrip = this.parcelMenuStrip;
-            this.Name = "Prog2Form";
+            this.Name = "Prog3Form";
             this.Text = "Program 2";
             this.parcelMenuStrip.ResumeLayout(false);
             this.parcelMenuStrip.PerformLayout();
@@ -166,6 +202,10 @@
         private System.Windows.Forms.TextBox reportTxt;
         private System.Windows.Forms.ToolStripMenuItem letterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listParcelsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem editAddressToolStripMenuItem;
     }
 }
 

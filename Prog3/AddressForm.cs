@@ -13,10 +13,6 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace UPVApp
@@ -37,7 +33,7 @@ namespace UPVApp
             // Add states to comboBox
             foreach (string state in states)
                 stateCbo.Items.Add(state);
-            
+
             // This is not required but nice
             // If use, must remain in constructor not Load event
             // so that when loading data in P3 for editing, can still
@@ -149,7 +145,7 @@ namespace UPVApp
         // Precondition:  Focus is shifting from stateCbo
         // Postcondition: If no state selected, focus remains and error
         //                provider highlights the field
-        private void stateCbo_Validating(object sender, CancelEventArgs e)
+        protected virtual void stateCbo_Validating(object sender, CancelEventArgs e)
         {
             if (stateCbo.SelectedIndex == -1) // Didn't select anything from cbo
             {
@@ -161,7 +157,7 @@ namespace UPVApp
         // Precondition:  Focus is shifting from zipTxt
         // Postcondition: If text is invalid, focus remains and error provider
         //                highlights the field
-        private void zipTxt_Validating(object sender, CancelEventArgs e)
+        protected virtual void zipTxt_Validating(object sender, CancelEventArgs e)
         {
             int zip;           // Zip code of address
 
@@ -178,7 +174,7 @@ namespace UPVApp
         //                sender is TextBox
         // Postcondition: If text is invalid, focus remains and error provider
         //                highlights the field
-        private void RequiredTextFields_Validating(object sender, CancelEventArgs e)
+        protected virtual void RequiredTextFields_Validating(object sender, CancelEventArgs e)
         {
             // Downcast to sender as TextBox, so make sure you obey precondition!
             TextBox textbox = sender as TextBox; // Cast sender as TextBox

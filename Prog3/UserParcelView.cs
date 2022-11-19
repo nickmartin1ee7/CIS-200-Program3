@@ -15,10 +15,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace UPVApp
 {
+    [Serializable]
     public class UserParcelView
     {
         // Namespace Accessible Data - Use with care
@@ -35,11 +35,29 @@ namespace UPVApp
         }
 
         // Precondition:  Address.MIN_ZIP <= zipcode <= Address.MAX_ZIP
+        // Postcondition: An Address with the specified values has been modified
+        //                and replaces the original in the UserParcelView.
+        public void EditAddress(string originalName, String name, String address1, String address2,
+        String city, String state, int zipcode)
+        {
+            var originalAddress = addresses.FirstOrDefault(address => address.Name == originalName); // Address being edited
+
+            if (originalAddress is null)
+                throw new ArgumentException($"{originalName} was not found in the list of addresses!");
+
+            addresses.Remove(originalAddress);
+            addresses.Add(new Address(name, address1, address2, city, state, zipcode));
+        }
+
+        // Precondition:  Address.MIN_ZIP <= zipcode <= Address.MAX_ZIP
         // Postcondition: An Address with the specified values has been created
         //                and added to the UserParcelView.
         public void AddAddress(String name, String address1, String address2,
         String city, String state, int zipcode)
         {
+            if (addresses.Any(address => address.Name == name))
+                throw new ArgumentException($"{name} cannot be used because it already has been used!");
+
             Address a; // The address being added
 
             a = new Address(name, address1, address2, city, state, zipcode);
