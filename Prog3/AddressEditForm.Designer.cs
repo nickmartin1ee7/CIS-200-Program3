@@ -66,20 +66,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Label nameLbl;
-        private System.Windows.Forms.Label address1Lbl;
-        private System.Windows.Forms.Label cityLbl;
-        private System.Windows.Forms.Label stateLbl;
-        private System.Windows.Forms.Label zipLbl;
-        private System.Windows.Forms.TextBox nameTxt;
-        private System.Windows.Forms.TextBox address1Txt;
-        private System.Windows.Forms.TextBox address2Txt;
-        private System.Windows.Forms.TextBox cityTxt;
-        private System.Windows.Forms.ComboBox stateCbo;
-        private System.Windows.Forms.TextBox zipTxt;
-        private System.Windows.Forms.Button okBtn;
-        private System.Windows.Forms.Button cancelBtn;
-        private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.ComboBox addressComboBox;
         private System.Windows.Forms.Label loadAddressLabel;
     }

@@ -84,6 +84,7 @@
     <Compile Include="TwoDayAirPackage.cs" />
     <EmbeddedResource Include="AddressEditForm.resx">
       <DependentUpon>AddressEditForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AddressForm.resx">
       <DependentUpon>AddressForm.cs</DependentUpon>

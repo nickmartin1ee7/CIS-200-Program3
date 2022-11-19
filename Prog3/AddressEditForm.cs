@@ -23,13 +23,15 @@ namespace UPVApp
         /// </summary>
         public string OriginalAddressName { get; internal set; }
 
-        // Precondition:  None
+        // Precondition:  Must be provided an instance of addresses, can be null or empty.
         // Postcondition: The form's GUI is prepared for display.
         public AddressEditForm(List<Address> addresses) : base()
         {
             InitializeComponent();
 
             ToggleTextEditableInputs();
+
+            if (addresses is null || !addresses.Any()) return;
 
             _namedAddresses = addresses
                 .ToDictionary(address => address.Name);
@@ -39,37 +41,52 @@ namespace UPVApp
                 .ToArray());
         }
 
+        /// <summary>
+        /// Toggles the Enabled status on most editable fields and Ok button in form.
+        /// </summary>
         private void ToggleTextEditableInputs()
         {
             _isEditable = !_isEditable;
 
-            base.nameTxt.Enabled = _isEditable;
-            base.address1Txt.Enabled = _isEditable;
-            base.address2Txt.Enabled = _isEditable;
-            base.cityTxt.Enabled = _isEditable;
-            base.stateCbo.Enabled = _isEditable;
-            base.zipTxt.Enabled = _isEditable;
-            base.okBtn.Enabled = _isEditable;
+            nameTxt.Enabled = _isEditable;
+            address1Txt.Enabled = _isEditable;
+            address2Txt.Enabled = _isEditable;
+            cityTxt.Enabled = _isEditable;
+            stateCbo.Enabled = _isEditable;
+            zipTxt.Enabled = _isEditable;
+            okBtn.Enabled = _isEditable;
         }
 
+        /// <summary>
+        /// Overrides the original inherited behavior to prevent validation if no selected address.
+        /// </summary>
         protected override void RequiredTextFields_Validating(object sender, CancelEventArgs e)
         {
             if (_isEditable)
                 base.RequiredTextFields_Validating(sender, e);
         }
 
+        /// <summary>
+        /// Overrides the original inherited behavior to prevent validation if no selected address.
+        /// </summary>
         protected override void stateCbo_Validating(object sender, CancelEventArgs e)
         {
             if (_isEditable)
                 base.stateCbo_Validating(sender, e);
         }
 
+        /// <summary>
+        /// Overrides the original inherited behavior to prevent validation if no selected address.
+        /// </summary>
         protected override void zipTxt_Validating(object sender, CancelEventArgs e)
         {
             if (_isEditable)
                 base.zipTxt_Validating(sender, e);
         }
 
+        /// <summary>
+        /// When the address index changes, make UI editable and load values into text boxes, while storing original name (key).
+        /// </summary>
         private void addressComboBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
             if (!_isEditable)

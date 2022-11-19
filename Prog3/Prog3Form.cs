@@ -200,6 +200,10 @@ namespace UPVApp
             reportTxt.SelectionLength = 0;
         }
 
+        /// <summary>
+        /// About, Opens file dialog for user.
+        /// Happy path serialized view model to disk.
+        /// </summary>
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var openFileDialog = new OpenFileDialog())
@@ -226,6 +230,10 @@ namespace UPVApp
             }
         }
 
+        /// <summary>
+        /// About, Opens save file dialog for user.
+        /// Happy path deserializes view model from disk.
+        /// </summary>
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (var saveFileDialog = new SaveFileDialog())
@@ -282,6 +290,10 @@ namespace UPVApp
             }
         }
 
+        /// <summary>
+        /// Helper method, displays validation error with optionally provided body content.
+        /// </summary>
+        /// <param name="message">Optional; body content to display.</param>
         private void ShowAddressValidationError(string message = null) => _ = string.IsNullOrWhiteSpace(message)
             ? MessageBox.Show("Problem with Address Validation!", "Validation Error")
             : MessageBox.Show(message, "Validation Error");

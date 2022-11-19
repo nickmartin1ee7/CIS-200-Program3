@@ -37,12 +37,12 @@
             this.insertToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.letterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.editAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listAddressesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listParcelsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportTxt = new System.Windows.Forms.TextBox();
-            this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editAddressToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.parcelMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -73,28 +73,28 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.openToolStripMenuItem.Text = "&Open";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.saveAsToolStripMenuItem.Text = "&Save As";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.aboutToolStripMenuItem.Text = "A&bout";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(114, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -120,6 +120,21 @@
             this.letterToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.letterToolStripMenuItem.Text = "&Letter";
             this.letterToolStripMenuItem.Click += new System.EventHandler(this.letterToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editAddressToolStripMenuItem});
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
+            this.editToolStripMenuItem.Text = "&Edit";
+            // 
+            // editAddressToolStripMenuItem
+            // 
+            this.editAddressToolStripMenuItem.Name = "editAddressToolStripMenuItem";
+            this.editAddressToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editAddressToolStripMenuItem.Text = "&Address";
+            this.editAddressToolStripMenuItem.Click += new System.EventHandler(this.editAddressToolStripMenuItem_Click);
             // 
             // reportToolStripMenuItem
             // 
@@ -156,21 +171,6 @@
             this.reportTxt.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.reportTxt.Size = new System.Drawing.Size(560, 505);
             this.reportTxt.TabIndex = 1;
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editAddressToolStripMenuItem});
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.editToolStripMenuItem.Text = "&Edit";
-            // 
-            // editAddressToolStripMenuItem
-            // 
-            this.editAddressToolStripMenuItem.Name = "editAddressToolStripMenuItem";
-            this.editAddressToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.editAddressToolStripMenuItem.Text = "Edit &Address";
-            this.editAddressToolStripMenuItem.Click += new System.EventHandler(this.editAddressToolStripMenuItem_Click);
             // 
             // Prog3Form
             // 
