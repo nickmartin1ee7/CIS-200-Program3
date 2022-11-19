@@ -30,6 +30,7 @@
         {
             this.addressComboBox = new System.Windows.Forms.ComboBox();
             this.loadAddressLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // addressComboBox
@@ -57,8 +58,23 @@
             this.Controls.Add(this.loadAddressLabel);
             this.Controls.Add(this.addressComboBox);
             this.Name = "AddressEditForm";
+            this.Text = "Edit Address";
+            this.Controls.SetChildIndex(this.nameLbl, 0);
+            this.Controls.SetChildIndex(this.address1Lbl, 0);
+            this.Controls.SetChildIndex(this.cityLbl, 0);
+            this.Controls.SetChildIndex(this.stateLbl, 0);
+            this.Controls.SetChildIndex(this.zipLbl, 0);
+            this.Controls.SetChildIndex(this.nameTxt, 0);
+            this.Controls.SetChildIndex(this.address1Txt, 0);
+            this.Controls.SetChildIndex(this.address2Txt, 0);
+            this.Controls.SetChildIndex(this.cityTxt, 0);
+            this.Controls.SetChildIndex(this.stateCbo, 0);
+            this.Controls.SetChildIndex(this.zipTxt, 0);
+            this.Controls.SetChildIndex(this.okBtn, 0);
+            this.Controls.SetChildIndex(this.cancelBtn, 0);
             this.Controls.SetChildIndex(this.addressComboBox, 0);
             this.Controls.SetChildIndex(this.loadAddressLabel, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
