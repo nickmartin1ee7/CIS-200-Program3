@@ -37,16 +37,37 @@ namespace UPVApp
         // Precondition:  Address.MIN_ZIP <= zipcode <= Address.MAX_ZIP
         // Postcondition: An Address with the specified values has been modified
         //                and replaces the original in the UserParcelView.
-        public void EditAddress(string originalName, String name, String address1, String address2,
-        String city, String state, int zipcode)
+        public void EditAddress(string originalName, string name, string address1, string address2,
+        string city, string state, int zipcode)
         {
-            var originalAddress = addresses.FirstOrDefault(address => address.Name == originalName); // Address being edited
+            // Find original address now being edited
+            var originalAddress = addresses.FirstOrDefault(address =>
+                address.Name == originalName);
 
+            // Can't continue if we didn't find it
             if (originalAddress is null)
                 throw new ArgumentException($"{originalName} was not found in the list of addresses!");
 
-            addresses.Remove(originalAddress);
-            addresses.Add(new Address(name, address1, address2, city, state, zipcode));
+            UpdateAddress(originalAddress, new Address(name, address1, address2, city, state, zipcode));
+        }
+
+        /// <summary>
+        /// A helper method that sets the properties of an original address to a new address's values.
+        /// This does *not* replace the original reference type, just mutates it.
+        /// </summary>
+        /// <param name="originalAddress">The original address to mutate.</param>
+        /// <param name="newAddress">The new address to mutate the original with.</param>
+        private void UpdateAddress(Address originalAddress, Address newAddress)
+        {
+            if (originalAddress is null || newAddress is null)
+                return;
+
+            originalAddress.Name = newAddress.Name;
+            originalAddress.Address1 = newAddress.Address1;
+            originalAddress.Address2 = newAddress.Address2;
+            originalAddress.City = newAddress.City;
+            originalAddress.State = newAddress.State;
+            originalAddress.Zip = newAddress.Zip;
         }
 
         // Precondition:  Address.MIN_ZIP <= zipcode <= Address.MAX_ZIP
